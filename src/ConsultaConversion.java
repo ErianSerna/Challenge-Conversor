@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class ConsultaConversion {
 
+
+
     Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
             .setPrettyPrinting()
@@ -17,7 +19,7 @@ public class ConsultaConversion {
 
     public void CreateLink(String currency, String currency2,double amount) {
 
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/e33f400523bede3de736ecc2/pair/"+currency+"/"+currency2+"/"+amount);
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/your-api-key-here/pair/"+currency+"/"+currency2+"/"+amount);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -28,18 +30,17 @@ public class ConsultaConversion {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
-//            System.out.println("La cantidad de " + amount + "["+currency+"]" + " convertido a " + "["+currency2+"]" + " es: " + gson.fromJson(response.body(), Conversion.class));
-
             String json = response.body();
+            System.out.println(json + "\n");
 
-            //El json funciona, la api funciona pero no me devuelve el conversion_result
-
-            System.out.println(json);
+            //El json funciona, la api funciona pero no me devuelve el conversion_result, ni el conversion_rate
 
             Conversion conv = gson.fromJson(json, Conversion.class);
-            System.out.println(conv);
 
-            System.out.println("La cantidad de " + amount + " ["+currency+"]" + " convertido a " + "["+currency2+"]" + " es: " + conv);
+
+            System.out.println("La cantidad de " + amount + " [" + currency + "]" + " equivale a:  " + conv.conversion_result() + " [" + currency2 + "]");
+
+//            System.out.println("La tasa de conversión utilizada fue: " + objM.getConversionRate() );
 
         } catch (Exception e) {
             throw new RuntimeException("No encontré esa divisa.");

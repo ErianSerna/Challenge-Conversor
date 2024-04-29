@@ -22,7 +22,6 @@ public class Main {
                     objCC.CreateLink("USD", "ARS", objCC.DineroAconvertir());
                     break;
                 case 2:
-                    System.out.println("2");
                     break;
                 case 3:
                     break;

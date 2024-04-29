@@ -1,4 +1,4 @@
 
-public record Conversion(double conversion_result) {
+public record Conversion(double conversion_result, double conversion_rate) {
 }
 
