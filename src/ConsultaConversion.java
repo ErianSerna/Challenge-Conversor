@@ -15,7 +15,14 @@ public class ConsultaConversion {
             .setPrettyPrinting()
             .create();
 
-    public void CreateLink(String currency, String currency2,double amount) {
+    private String currency;
+    private String currency2;
+    private double amount;
+
+    public ConsultaConversion() {
+    }
+
+    public Conversion CreateLink(String currency, String currency2, double amount) {
 
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/your-api-key-here/pair/"+currency+"/"+currency2+"/"+amount);
 
@@ -27,23 +34,13 @@ public class ConsultaConversion {
         try {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-
-            String json = response.body();
-            System.out.println(json + "\n");
-
             //El json funciona, la api funciona pero no me devuelve el conversion_result, ni el conversion_rate
-
-            Conversion conv = gson.fromJson(json, Conversion.class);
-
-
-            System.out.println("La cantidad de " + amount + " [" + currency + "]" + " equivale a:  " + conv.conversion_result() + " [" + currency2 + "]");
-
-//            System.out.println("La tasa de conversión utilizada fue: " + objM.getConversionRate() ); (idea)
-
+            return new Gson().fromJson(response.body(), Conversion.class);
         } catch (Exception e) {
             throw new RuntimeException("No encontré esa divisa.");
         }
     }
+
 
     public String menuConversion(){
         return """
