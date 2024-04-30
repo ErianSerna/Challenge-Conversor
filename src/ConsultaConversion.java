@@ -38,7 +38,7 @@ public class ConsultaConversion {
 
             System.out.println("La cantidad de " + amount + " [" + currency + "]" + " equivale a:  " + conv.conversion_result() + " [" + currency2 + "]");
 
-//            System.out.println("La tasa de conversión utilizada fue: " + objM.getConversionRate() );
+//            System.out.println("La tasa de conversión utilizada fue: " + objM.getConversionRate() ); (idea)
 
         } catch (Exception e) {
             throw new RuntimeException("No encontré esa divisa.");
