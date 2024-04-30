@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 public class ConsultaConversion {
 
-
-
     Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
             .setPrettyPrinting()
