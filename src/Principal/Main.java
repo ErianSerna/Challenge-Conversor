@@ -2,8 +2,7 @@ package Principal;
 
 
 import Servicios.ConsultaConversion;
-import Record.Conversion;
-import java.util.Map;
+
 import java.util.Scanner;
 
 public class Main {
@@ -17,8 +16,6 @@ public class Main {
             System.out.println(objCC.menuConversion());
             opc = scan.nextInt();
             double amount;
-            Object info;
-
 
             if(opc == 8){
                 break;
@@ -27,28 +24,41 @@ public class Main {
             switch (opc) {
 
                 case 1:
-
                     amount = objCC.DineroAconvertir();
-
                     objCC.CreateLink("USD", "ARS", amount);
-                    System.out.println("La cantidad de " + amount + " [USD]" + " equivale a:  "  + " [ARS]");
-
-//Muestra lo de la API pero necesita solo mosotrar el conversion rate y el result por separado
-// System.out.println("La cantidad de " + amount + " [USD]" + " equivale a:  " + objM.getConversionResult() + " [ARS]")
-// System.out.println("La tasa de conversión utilizada fue: " + objM.getConversionRate() );
-
                     break;
                 case 2:
+                    amount = objCC.DineroAconvertir();
+                    objCC.CreateLink("ARS", "USD", amount);
                     break;
                 case 3:
+                    amount = objCC.DineroAconvertir();
+                    objCC.CreateLink("USD", "BRL", amount);
                     break;
                 case 4:
+                    amount = objCC.DineroAconvertir();
+                    objCC.CreateLink("BRL", "USD", amount);
                     break;
                 case 5:
+                    amount = objCC.DineroAconvertir();
+                    objCC.CreateLink("USD", "COP", amount);
                     break;
                 case 6:
+                    amount = objCC.DineroAconvertir();
+                    objCC.CreateLink("COP", "USD", amount);
                     break;
                 case 7:
+                    try{
+                        System.out.println("Ingrese la moneda base: ");
+                        String op1 = scan.next().toUpperCase().replace( " ","");
+                        System.out.println("Ingrese la moneda objetivo: ");
+                        String op2 = scan.next().toUpperCase().replace( " ","");
+                        amount = objCC.DineroAconvertir();
+                        objCC.CreateLink(op1, op2, amount);
+                    } catch (Exception e) {
+                        throw new RuntimeException("Divisa no encontrada");
+                    }
+
                     break;
                 default:
                     System.out.println("Opción invalida");
