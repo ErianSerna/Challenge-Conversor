@@ -3,10 +3,11 @@ package Principal;
 
 import Servicios.ConsultaConversion;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
         ConsultaConversion objCC = new ConsultaConversion();
         int opc;
@@ -17,7 +18,7 @@ public class Main {
             opc = scan.nextInt();
             double amount;
 
-            if(opc == 8){
+            if (opc == 8) {
                 break;
             }
 
@@ -48,11 +49,11 @@ public class Main {
                     objCC.CreateLink("COP", "USD", amount);
                     break;
                 case 7:
-                    try{
+                    try {
                         System.out.println("Ingrese la moneda base: ");
-                        String op1 = scan.next().toUpperCase().replace( " ","");
+                        String op1 = scan.next().toUpperCase().replace(" ", "");
                         System.out.println("Ingrese la moneda objetivo: ");
-                        String op2 = scan.next().toUpperCase().replace( " ","");
+                        String op2 = scan.next().toUpperCase().replace(" ", "");
                         amount = objCC.DineroAconvertir();
                         objCC.CreateLink(op1, op2, amount);
                     } catch (Exception e) {
@@ -64,11 +65,8 @@ public class Main {
                     System.out.println("Opción invalida");
                     break;
             }
-
-
         } while (opc != 9);
-
-
+        System.out.println("Historial de conversiones en esta sección: " + "\n" +  objCC.getHistorial());
     }
 }
 
