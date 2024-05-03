@@ -28,7 +28,7 @@ public class ConsultaConversion {
     }
 
     public void CreateLink(Object currency, Object currency2, Object amount) {
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/e33f400523bede3de736ecc2/pair/" + currency + "/" + currency2 + "/" + amount);
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/YOUR-API-KEY-HERE/pair/" + currency + "/" + currency2 + "/" + amount);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
