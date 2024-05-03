@@ -57,8 +57,8 @@ public class ConsultaConversion {
             }
 
             historial.add("\nConversión #" + cont
-                    + "\nUsted ingreso " + amount + " en " + "[" + currency + "]"
-                    + "\nRadio de conversión: " + String.format("%.5f", conversion_rate) + " ----> valor de [" + currency + "]" + " en " + "[" + currency2 + "]"
+                    + "\nUsted ingresó " + amount + " en " + "[" + currency + "]"
+                    + "\nRadio de conversión: " + String.format("%.5f", conversion_rate) + " ----> Valor de [" + currency + "]" + " en " + "[" + currency2 + "]"
                     + "\nResultado de la conversión: " + String.format("%.2f", conversion_result) + " [" + currency2 + "]"
                     + "\nHora de ejecución: " + instant.atZone(ZoneId.systemDefault()).toLocalTime().toString().substring(0, 8)
                     + "\nFecha de ejecución: " + instant.atZone(ZoneId.systemDefault()).toLocalDate()
