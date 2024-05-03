@@ -23,6 +23,10 @@ public class ConsultaConversion {
     int cont = 1;
     List<String> historial = new ArrayList<>();
 
+    public List<String> getHistorial() {
+        return historial;
+    }
+
     public void CreateLink(Object currency, Object currency2, Object amount) {
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/e33f400523bede3de736ecc2/pair/" + currency + "/" + currency2 + "/" + amount);
 
@@ -60,14 +64,10 @@ public class ConsultaConversion {
                     + "\nFecha de ejecución: " + instant.atZone(ZoneId.systemDefault()).toLocalDate()
                     + "\n");
             cont++;
+
         } catch (Exception e) {
             throw new RuntimeException("Error: " + e);
         }
-
-    }
-
-    public List<String> getHistorial() {
-        return historial;
     }
 
 

@@ -23,7 +23,6 @@ public class Main {
             }
 
             switch (opc) {
-
                 case 1:
                     amount = objCC.DineroAconvertir();
                     objCC.CreateLink("USD", "ARS", amount);
@@ -56,17 +55,26 @@ public class Main {
                         String op2 = scan.next().toUpperCase().replace(" ", "");
                         amount = objCC.DineroAconvertir();
                         objCC.CreateLink(op1, op2, amount);
+
                     } catch (Exception e) {
                         throw new RuntimeException("Divisa no encontrada");
                     }
 
                     break;
                 default:
-                    System.out.println("Opción invalida");
-                    break;
+                    System.out.println("""
+                            Opción inválida
+                            _________________________________________
+                            """);
+
             }
         } while (opc != 9);
-        System.out.println("Historial de conversiones en esta sección: " + "\n" +  objCC.getHistorial());
+        if(objCC.getHistorial().isEmpty()){
+            System.out.println("Historial vacio");
+        } else {
+            System.out.println("Historial de conversiones en esta sección: " + "\n" + objCC.getHistorial());
+        }
+
     }
 }
 
